@@ -11,7 +11,12 @@ then
   echo "PostgreSQL started"
 fi
 
-python manage.py flush --no-input
-python manage.py migrate
+# #comment these two lines in to run on every container start or re-start
+# python manage.py flush --no-input
+# python manage.py migrate
+
+#the above two commands can be run manually after the containers spin up:
+# docker-compose exec web python manage.py flush --no-input
+# docker-compose exec web python manage.py migrate
 
 exec "$@"
